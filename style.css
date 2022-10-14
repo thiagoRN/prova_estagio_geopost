@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+*{
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* GRUPOS DE TIMES */   
+
+#teams{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    border: 0.8px solid rgb(211, 211, 211);
+    height: 250px;
+}
+
+#grupoA,#grupoB,#grupoC,#grupoD,#grupoE,#grupoF,#grupoG,#grupoH{
+    border: 0.8px solid rgb(211, 211, 211);
+    border-color: rgb(179, 178, 178);
+    margin: 15px 0 15px 15px;
+    width: 100%;
+    
+}
+
+
+
+div h3{
+    background-color: rgb(110, 151, 238);
+    padding: 8px 0px 8px 2px;
+    margin-bottom: 5px;
+    color: aliceblue;
+}
+
+#grupe-a{
+    display: block;
+    margin: 8px;
+}
+
+/* TABELAS */   
+
+#table-content{
+    background-color: rgb(209, 209, 209);
+    margin-top: 35px;  
+}
+
+
+#table-title{
+    background:none;
+    color: black;
+}
+
+#table{
+    display:  block;
+}
+
+#thead{
+    display:flex;
+    justify-content: end;
+}
+
+#tbody{
+    display:flex;
+    justify-content: space-between;
+}
+
+#th-score{
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    margin: 0px 17.8px 20px 0px;
+    font-weight: bold;
+}
+
+#td-score{
+    display: inline-block;
+    margin: 0px 16px 0px 0px;
+    font-weight: bold;
+}
+
+
+
+
