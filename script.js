@@ -31,7 +31,7 @@ const loadAll = async () => {
 const grupes = async () =>{
     let team = await loadAll();
     console.log(team);
-    
+    let i = 0;
 
     let grupoA = document.getElementById('grupoA');
     let grupoB = document.getElementById('grupoB');
@@ -41,35 +41,59 @@ const grupes = async () =>{
     let grupoF = document.getElementById('grupoF');
     let grupoG = document.getElementById('grupoG');
     let grupoH = document.getElementById('grupoH');
-    let td = document.getElementById('td-p');
+    
+    
     team.map((element,index) => {
         if(index <= 3){
+            let td = document.getElementById(`td-p${i}`);
              var g = grupesList(element.Name);
+             grupoA.appendChild(g);
              var t = grupesList(element.Name);
+             td.appendChild(t); 
 
-            td.appendChild(t); 
-            grupoA.appendChild(g)
         }if (index >= 4 && index <= 7){
+            let td = document.getElementById(`td-p${i+1}`);
             var g = grupesList(element.Name);
             grupoB.appendChild(g)
+            var t = grupesList(element.Name);
+             td.appendChild(t); 
+            
         }if (index >= 8 && index <= 11){
+            let td = document.getElementById(`td-p${i+2}`);
             var g = grupesList(element.Name);
             grupoC.appendChild(g)
+            var t = grupesList(element.Name);
+             td.appendChild(t); 
         }if (index >= 12 && index <= 15){
+            let td = document.getElementById(`td-p${i+3}`);
             var g = grupesList(element.Name);
             grupoD.appendChild(g)
+            var t = grupesList(element.Name);
+             td.appendChild(t); 
         }if (index >= 16 && index <= 19){
+            let td = document.getElementById(`td-p${i+4}`);
             var g = grupesList(element.Name);
             grupoE.appendChild(g)
+            var t = grupesList(element.Name);
+             td.appendChild(t); 
         }if (index >= 20 && index <= 23){
+            let td = document.getElementById(`td-p${i+5}`);
             var g = grupesList(element.Name);
             grupoF.appendChild(g)
+            var t = grupesList(element.Name);
+             td.appendChild(t); 
         }if (index >= 24 && index <= 27){
+            let td = document.getElementById(`td-p${i+6}`);
             var g = grupesList(element.Name);
             grupoG.appendChild(g)
+            var t = grupesList(element.Name);
+             td.appendChild(t); 
         }if (index >=28){
+            let td = document.getElementById(`td-p${i+7}`);
             var g = grupesList(element.Name);
             grupoH.appendChild(g)
+            var t = grupesList(element.Name);
+             td.appendChild(t); 
         }
     });
 }
@@ -84,13 +108,197 @@ const grupesList = (element) =>{
     return name
 }
 
-const grupesLis = (element) =>{
+const grupesBoard = (element) =>{
+    
     let name = document.createElement("p");
-    name.setAttribute("id", `td-score`);
+    name.setAttribute("id", `board-score`);
     name.innerHTML = element;
     
     return name
 }
+
+const boardScore = (element) =>{
+    let grupos = 0;
+    let resultA = resultados();
+    let resultB = resultados();
+    let resultC = resultados();
+    let resultD = resultados();
+    let resultE = resultados();
+    let resultF = resultados();
+    let resultG = resultados();
+    let resultH = resultados();
+    
+    
+
+    resultA.forEach((element,index) => {
+        
+        let tp = document.getElementById(`p-score${grupos += 1}`);
+
+
+        var jj = grupesBoard(element.J)
+        var vt = grupesBoard(element.V)
+        var ep = grupesBoard(element.E)
+        var dt = grupesBoard(element.D)
+        var gs = grupesBoard(element.G)
+        var pt = grupesBoard(element.P) 
+
+        tp.appendChild(jj); 
+        tp.appendChild(vt); 
+        tp.appendChild(ep); 
+        tp.appendChild(dt); 
+        tp.appendChild(gs);
+        tp.appendChild(pt); 
+    
+    });
+
+    resultB.forEach((element,index) => {
+        
+        let tp = document.getElementById(`p-score${grupos += 1}`);
+
+
+        var jj = grupesBoard(element.J)
+        var vt = grupesBoard(element.V)
+        var ep = grupesBoard(element.E)
+        var dt = grupesBoard(element.D)
+        var gs = grupesBoard(element.G)
+        var pt = grupesBoard(element.P) 
+
+        tp.appendChild(jj); 
+        tp.appendChild(vt); 
+        tp.appendChild(ep); 
+        tp.appendChild(dt); 
+        tp.appendChild(gs);
+        tp.appendChild(pt); 
+    
+    });
+
+    resultC.forEach((element,index) => {
+        
+        let tp = document.getElementById(`p-score${grupos += 1}`);
+
+
+        var jj = grupesBoard(element.J)
+        var vt = grupesBoard(element.V)
+        var ep = grupesBoard(element.E)
+        var dt = grupesBoard(element.D)
+        var gs = grupesBoard(element.G)
+        var pt = grupesBoard(element.P) 
+
+        tp.appendChild(jj); 
+        tp.appendChild(vt); 
+        tp.appendChild(ep); 
+        tp.appendChild(dt); 
+        tp.appendChild(gs);
+        tp.appendChild(pt); 
+    
+    });
+
+    resultD.forEach((element,index) => {
+        
+        let tp = document.getElementById(`p-score${grupos += 1}`);
+
+
+        var jj = grupesBoard(element.J)
+        var vt = grupesBoard(element.V)
+        var ep = grupesBoard(element.E)
+        var dt = grupesBoard(element.D)
+        var gs = grupesBoard(element.G)
+        var pt = grupesBoard(element.P) 
+
+        tp.appendChild(jj); 
+        tp.appendChild(vt); 
+        tp.appendChild(ep); 
+        tp.appendChild(dt); 
+        tp.appendChild(gs);
+        tp.appendChild(pt); 
+    
+    });
+
+    resultE.forEach((element,index) => {
+        
+        let tp = document.getElementById(`p-score${grupos += 1}`);
+
+
+        var jj = grupesBoard(element.J)
+        var vt = grupesBoard(element.V)
+        var ep = grupesBoard(element.E)
+        var dt = grupesBoard(element.D)
+        var gs = grupesBoard(element.G)
+        var pt = grupesBoard(element.P) 
+
+        tp.appendChild(jj); 
+        tp.appendChild(vt); 
+        tp.appendChild(ep); 
+        tp.appendChild(dt); 
+        tp.appendChild(gs);
+        tp.appendChild(pt); 
+    
+    });
+
+    resultF.forEach((element,index) => {
+        
+        let tp = document.getElementById(`p-score${grupos += 1}`);
+
+
+        var jj = grupesBoard(element.J)
+        var vt = grupesBoard(element.V)
+        var ep = grupesBoard(element.E)
+        var dt = grupesBoard(element.D)
+        var gs = grupesBoard(element.G)
+        var pt = grupesBoard(element.P) 
+
+        tp.appendChild(jj); 
+        tp.appendChild(vt); 
+        tp.appendChild(ep); 
+        tp.appendChild(dt); 
+        tp.appendChild(gs);
+        tp.appendChild(pt); 
+    
+    });
+
+    resultG.forEach((element,index) => {
+        
+        let tp = document.getElementById(`p-score${grupos += 1}`);
+
+
+        var jj = grupesBoard(element.J)
+        var vt = grupesBoard(element.V)
+        var ep = grupesBoard(element.E)
+        var dt = grupesBoard(element.D)
+        var gs = grupesBoard(element.G)
+        var pt = grupesBoard(element.P) 
+
+        tp.appendChild(jj); 
+        tp.appendChild(vt); 
+        tp.appendChild(ep); 
+        tp.appendChild(dt); 
+        tp.appendChild(gs);
+        tp.appendChild(pt); 
+    
+    });
+
+    resultH.forEach((element,index) => {
+        
+        let tp = document.getElementById(`p-score${grupos += 1}`);
+
+
+        var jj = grupesBoard(element.J)
+        var vt = grupesBoard(element.V)
+        var ep = grupesBoard(element.E)
+        var dt = grupesBoard(element.D)
+        var gs = grupesBoard(element.G)
+        var pt = grupesBoard(element.P) 
+
+        tp.appendChild(jj); 
+        tp.appendChild(vt); 
+        tp.appendChild(ep); 
+        tp.appendChild(dt); 
+        tp.appendChild(gs);
+        tp.appendChild(pt); 
+    
+    });
+}
+
 
 
 const resultados = () => {
@@ -254,12 +462,13 @@ const resultados = () => {
     
     
    } 
-   console.log(timeA)
-   console.log(timeB)
-   console.log(timeC)
-   console.log(timeD)
+
+
+    return [timeA,timeB,timeC,timeD];
+   
 }
 
-resultados();
 
+grupesBoard();
+boardScore();
 grupes();

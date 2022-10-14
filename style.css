@@ -24,7 +24,7 @@
     height: 250px;
 }
 
-#grupoA,#grupoB,#grupoC,#grupoD,#grupoE,#grupoF,#grupoG,#grupoH{
+#teams div{
     border: 0.8px solid rgb(211, 211, 211);
     border-color: rgb(179, 178, 178);
     margin: 15px 0 15px 15px;
@@ -43,14 +43,22 @@ div h3{
 
 #grupe-a{
     display: block;
-    margin: 8px;
+    margin: 8px 8px 16px 8px;
 }
 
 /* TABELAS */   
+#body-section{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 
 #table-content{
     background-color: rgb(209, 209, 209);
-    margin-top: 35px;  
+    margin: 35px;
+    min-width: 300px;  
+    
 }
 
 
@@ -73,19 +81,25 @@ div h3{
     justify-content: space-between;
 }
 
-#th-score{
+#board{
     display: inline-block;
     text-align: center;
     justify-content: center;
-    margin: 0px 17.8px 20px 0px;
+    margin: 0px 16.5px 20px 0px;
     font-weight: bold;
 }
 
-#td-score{
+#board-score{
     display: inline-block;
-    margin: 0px 16px 0px 0px;
+    margin: 4px 16px 0px 0px;
     font-weight: bold;
+    
 }
+#p-score div{
+    margin-bottom: 15px;
+}
+
+
 
 
 
