@@ -30,8 +30,10 @@ const loadAll = async () => {
 
 const grupes = async () =>{
     let team = await loadAll();
-    console.log(team);
     let i = 0;
+    let j= 1;
+    let resultA = resultados();
+       
 
     let grupoA = document.getElementById('grupoA');
     let grupoB = document.getElementById('grupoB');
@@ -42,6 +44,8 @@ const grupes = async () =>{
     let grupoG = document.getElementById('grupoG');
     let grupoH = document.getElementById('grupoH');
     
+   
+
     
     team.map((element,index) => {
         if(index <= 3){
@@ -50,6 +54,8 @@ const grupes = async () =>{
              grupoA.appendChild(g);
              var t = grupesList(element.Name);
              td.appendChild(t); 
+            
+        
 
         }if (index >= 4 && index <= 7){
             let td = document.getElementById(`td-p${i+1}`);
@@ -108,6 +114,11 @@ const grupesList = (element) =>{
     return name
 }
 
+
+
+
+
+
 const grupesBoard = (element) =>{
     
     let name = document.createElement("p");
@@ -130,7 +141,7 @@ const boardScore = (element) =>{
     
     
 
-    resultA.forEach((element,index) => {
+    resultA.forEach((element) => {
         
         let tp = document.getElementById(`p-score${grupos += 1}`);
 
@@ -151,7 +162,7 @@ const boardScore = (element) =>{
     
     });
 
-    resultB.forEach((element,index) => {
+    resultB.forEach((element) => {
         
         let tp = document.getElementById(`p-score${grupos += 1}`);
 
@@ -172,7 +183,7 @@ const boardScore = (element) =>{
     
     });
 
-    resultC.forEach((element,index) => {
+    resultC.forEach((element) => {
         
         let tp = document.getElementById(`p-score${grupos += 1}`);
 
@@ -193,7 +204,7 @@ const boardScore = (element) =>{
     
     });
 
-    resultD.forEach((element,index) => {
+    resultD.forEach((element) => {
         
         let tp = document.getElementById(`p-score${grupos += 1}`);
 
@@ -214,7 +225,7 @@ const boardScore = (element) =>{
     
     });
 
-    resultE.forEach((element,index) => {
+    resultE.forEach((element) => {
         
         let tp = document.getElementById(`p-score${grupos += 1}`);
 
@@ -235,7 +246,7 @@ const boardScore = (element) =>{
     
     });
 
-    resultF.forEach((element,index) => {
+    resultF.forEach((element) => {
         
         let tp = document.getElementById(`p-score${grupos += 1}`);
 
@@ -256,7 +267,7 @@ const boardScore = (element) =>{
     
     });
 
-    resultG.forEach((element,index) => {
+    resultG.forEach((element) => {
         
         let tp = document.getElementById(`p-score${grupos += 1}`);
 
@@ -277,7 +288,7 @@ const boardScore = (element) =>{
     
     });
 
-    resultH.forEach((element,index) => {
+    resultH.forEach((element) => {
         
         let tp = document.getElementById(`p-score${grupos += 1}`);
 
@@ -336,10 +347,10 @@ const resultados = () => {
     }
 
    for(let i = 0; i < 3; i++){
-    let A = Math.floor(Math.random() * 6);
-    let B = Math.floor(Math.random() * 6);
-    let C = Math.floor(Math.random() * 6);
-    let D = Math.floor(Math.random() * 6);
+    let A = Math.floor(Math.random() * 4);
+    let B = Math.floor(Math.random() * 4);
+    let C = Math.floor(Math.random() * 4);
+    let D = Math.floor(Math.random() * 4);
 
     switch (i) {
         case 0:
@@ -463,9 +474,53 @@ const resultados = () => {
     
    } 
 
+   //função retorna ja em ordem
+   
+   let ordenado = [timeA,timeB,timeC,timeD]
+    
+   colocacao(ordenado);
+
 
     return [timeA,timeB,timeC,timeD];
    
+}
+
+
+
+const colocacao = (item) => {
+    let primeiro = item[0];
+    let segundo = item[0];
+    let terceiro = item[0];
+    let quarto = item[0];
+
+     
+
+
+    for(let arrays in item){
+        let i = 0;
+        
+        console.log(item)
+        for(let i = 0; i < item.length; i++){
+            if(arrays.P >= item[i].P && arrays.G >= item[i].G) primeiro = arrays;
+        }
+
+        
+        for(let i = 0; i < item.length; i++){
+            if(arrays.P <= item[i].P && arrays.G <= item[i].G)quarto = arrays;
+        }
+
+        for(let i = 0; i < item.length; i++){
+            if(arrays.P < primeiro.P && arrays.P >= quarto.P && arrays.G < primeiro.G && arrays.G >= quarto.G)terceiro = arrays;
+        }
+
+        for(let i = 0; i < item.length; i++){
+            if(arrays.P <= primeiro.P && arrays.P >= terceiro.P && arrays.G <= primeiro.G && arrays.G >= terceiro.G)segundo = arrays;
+        }
+
+        
+    }
+    
+    console.log(primeiro,segundo,terceiro,quarto);
 }
 
 

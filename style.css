@@ -91,9 +91,14 @@ div h3{
 
 #board-score{
     display: inline-block;
-    margin: 4px 16px 0px 0px;
+    margin: 4px 18px 0px 0px;
     font-weight: bold;
     
+}
+
+#tbody  a{
+    display: block;
+    margin: 8px 8px 16px 8px;
 }
 #p-score div{
     margin-bottom: 15px;
