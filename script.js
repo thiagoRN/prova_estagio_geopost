@@ -7,6 +7,27 @@ const basicFetch = async () => {
     return json.Result
   }
 
+  const separar = (base, maximo) =>{
+    var resultado = [[]];
+    var grupo = 0;
+  
+    for (var indice = 0; indice < base.length; indice++) {
+      if (resultado[grupo] === undefined) {
+        resultado[grupo] = [];
+      }
+  
+      resultado[grupo].push(base[indice]);
+  
+      if ((indice + 1) % maximo === 0) {
+        grupo = grupo + 1;
+      }
+    }
+  
+    return resultado;
+}
+
+
+
 const embaralhadorArras = (array) =>{
     let currentIndex = array.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
@@ -31,9 +52,8 @@ const loadAll = async () => {
 const grupes = async () =>{
     let team = await loadAll();
     let i = 0;
-    let j= 1;
-    let resultA = resultados();
-       
+    
+      
 
     let grupoA = document.getElementById('grupoA');
     let grupoB = document.getElementById('grupoB');
@@ -106,6 +126,8 @@ const grupes = async () =>{
 
 
 
+
+
 const grupesList = (element) =>{
     let name = document.createElement("a");
     name.setAttribute("id", `grupe-a`);
@@ -113,9 +135,6 @@ const grupesList = (element) =>{
     
     return name
 }
-
-
-
 
 
 
@@ -132,12 +151,12 @@ const boardScore = (element) =>{
     let grupos = 0;
     let resultA = resultados();
     let resultB = resultados();
-    let resultC = resultados();
-    let resultD = resultados();
-    let resultE = resultados();
-    let resultF = resultados();
-    let resultG = resultados();
-    let resultH = resultados();
+    // let resultC = resultados();
+    // let resultD = resultados();
+    // let resultE = resultados();
+    // let resultF = resultados();
+    // let resultG = resultados();
+    // let resultH = resultados();
     
     
 
@@ -392,76 +411,76 @@ const resultados = () => {
         break;
 
         case 1:
-            if(A < B){
-                timeA.J += 1;timeB.J += 1;
-                timeA.D += 1;timeB.V += 1;
-                timeA.G += A;timeB.G += B;
-                timeB.P += 3;
-            }else if(A > B){
-                timeA.J += 1;timeB.J += 1;
-                timeA.V += 1;timeB.D += 1;
-                timeA.G += A;timeB.G += B;
+            if(A < C){
+                timeA.J += 1;timeC.J += 1;
+                timeA.D += 1;timeC.V += 1;
+                timeA.G += A;timeC.G += C;
+                timeC.P += 3;
+            }else if(A > C){
+                timeA.J += 1;timeC.J += 1;
+                timeA.V += 1;timeC.D += 1;
+                timeA.G += A;timeC.G += C;
                 timeA.P += 3;
-            }else if(A = B){
-                timeA.J += 1;timeB.J += 1;
-                timeA.E += 1;timeB.E += 1;
-                timeA.G += A;timeB.G += B;
-                timeA.P += 1;timeB.P += 1;
+            }else if(A = C){
+                timeA.J += 1;timeC.J += 1;
+                timeA.E += 1;timeC.E += 1;
+                timeA.G += A;timeC.G += C;
+                timeA.P += 1;timeC.P += 1;
             }
 
-            if(C < D){
-                timeC.J += 1;timeD.J += 1;
-                timeC.D += 1;timeD.V += 1;
-                timeC.G += C;timeD.G += D;
+            if(B < D){
+                timeB.J += 1;timeD.J += 1;
+                timeB.D += 1;timeD.V += 1;
+                timeB.G += B;timeD.G += D;
                 timeD.P += 3;
-            }else if(C > D){
-                timeC.J += 1;timeD.J += 1;
-                timeC.V += 1;timeD.D += 1;
-                timeC.G += C;timeD.G += D;
-                timeC.P += 3;
-            }else if(C = D){
-                timeC.J += 1;timeD.J += 1;
-                timeC.E += 1;timeD.E += 1;
-                timeC.G += C;timeD.G += D;
-                timeC.P += 1;timeD.P += 1;
+            }else if(B > D){
+                timeB.J += 1;timeD.J += 1;
+                timeB.V += 1;timeD.D += 1;
+                timeB.G += B;timeD.G += D;
+                timeB.P += 3;
+            }else if(B = D){
+                timeB.J += 1;timeD.J += 1;
+                timeB.E += 1;timeD.E += 1;
+                timeB.G += B;timeD.G += D;
+                timeB.P += 1;timeD.P += 1;
             }
             
         
         break;
         
         case 2:
-            if(A < B){
-                timeA.J += 1;timeB.J += 1;
-                timeA.D += 1;timeB.V += 1;
-                timeA.G += A;timeB.G += B;
-                timeB.P += 3;
-            }else if(A > B){
-                timeA.J += 1;timeB.J += 1;
-                timeA.V += 1;timeB.D += 1;
-                timeA.G += A;timeB.G += B;
+            if(A < D){
+                timeA.J += 1;timeD.J += 1;
+                timeA.D += 1;timeD.V += 1;
+                timeA.G += A;timeD.G += D;
+                timeD.P += 3;
+            }else if(A > D){
+                timeA.J += 1;timeD.J += 1;
+                timeA.V += 1;timeD.D += 1;
+                timeA.G += A;timeD.G += D;
                 timeA.P += 3;
-            }else if(A = B){
-                timeA.J += 1;timeB.J += 1;
-                timeA.E += 1;timeB.E += 1;
-                timeA.G += A;timeB.G += B;
-                timeA.P += 1;timeB.P += 1;
+            }else if(A = D){
+                timeA.J += 1;timeD.J += 1;
+                timeA.E += 1;timeD.E += 1;
+                timeA.G += A;timeD.G += D;
+                timeA.P += 1;timeD.P += 1;
             }
 
-            if(C < D){
-                timeC.J += 1;timeD.J += 1;
-                timeC.D += 1;timeD.V += 1;
-                timeC.G += C;timeD.G += D;
-                timeD.P += 3;
-            }else if(C > D){
-                timeC.J += 1;timeD.J += 1;
-                timeC.V += 1;timeD.D += 1;
-                timeC.G += C;timeD.G += D;
+            if(C < B){
+                timeC.J += 1;timeB.J += 1;
+                timeC.D += 1;timeB.V += 1;
+                timeC.G += C;timeB.G += B;
+                timeB.P += 3;
+            }else if(C > B){
+                timeC.J += 1;timeB.J += 1;
+                timeC.V += 1;timeB.D += 1;
+                timeC.G += C;timeB.G += B;
                 timeC.P += 3;
-            }else if(C = D){
-                timeC.J += 1;timeD.J += 1;
-                timeC.E += 1;timeD.E += 1;
-                timeC.G += C;timeD.G += D;
-                timeC.P += 1;timeD.P += 1;
+            }else if(C = B){
+                timeC.J += 1;timeB.J += 1;
+                timeC.E += 1;timeB.E += 1;
+                timeC.G += C;timeB.G += B;
+                timeC.P += 1;timeB.P += 1;
             }
             
         
@@ -474,54 +493,20 @@ const resultados = () => {
     
    } 
 
-   //função retorna ja em ordem
+   chaves(timeA,timeB,timeC,timeD)
    
-   let ordenado = [timeA,timeB,timeC,timeD]
-    
-   colocacao(ordenado);
-
-
     return [timeA,timeB,timeC,timeD];
    
 }
 
 
+const chaves = async (A,B,C,D) =>{
+let teams = await loadAll();
 
-const colocacao = (item) => {
-    let primeiro = item[0];
-    let segundo = item[0];
-    let terceiro = item[0];
-    let quarto = item[0];
-
-     
-
-
-    for(let arrays in item){
-        let i = 0;
-        
-        console.log(item)
-        for(let i = 0; i < item.length; i++){
-            if(arrays.P >= item[i].P && arrays.G >= item[i].G) primeiro = arrays;
-        }
-
-        
-        for(let i = 0; i < item.length; i++){
-            if(arrays.P <= item[i].P && arrays.G <= item[i].G)quarto = arrays;
-        }
-
-        for(let i = 0; i < item.length; i++){
-            if(arrays.P < primeiro.P && arrays.P >= quarto.P && arrays.G < primeiro.G && arrays.G >= quarto.G)terceiro = arrays;
-        }
-
-        for(let i = 0; i < item.length; i++){
-            if(arrays.P <= primeiro.P && arrays.P >= terceiro.P && arrays.G <= primeiro.G && arrays.G >= terceiro.G)segundo = arrays;
-        }
-
-        
-    }
-    
-    console.log(primeiro,segundo,terceiro,quarto);
+console.log(A,B,C,D)
 }
+    
+
 
 
 grupesBoard();
