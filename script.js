@@ -5,8 +5,8 @@ const basicFetch = async () => {
     const json = await req.json();
     
     return json.Result
-  }
-
+}
+  //trocar nome
   const separar = (base, maximo) =>{
     var resultado = [[]];
     var grupo = 0;
@@ -25,9 +25,7 @@ const basicFetch = async () => {
   
     return resultado;
 }
-
-
-
+//trocar nome
 const embaralhadorArras = (array) =>{
     let currentIndex = array.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
@@ -38,298 +36,101 @@ const embaralhadorArras = (array) =>{
       array[randomIndex] = temporaryValue;
     }
     return array;
-  }
-
-const loadAll = async () => {
-      let team = await basicFetch();
-      
-      embaralhadorArras(team); 
-      
-      return team
 }
-
 
 const grupes = async () =>{
     let team = await loadAll();
-    let i = 0;
-    
-      
-
-    let grupoA = document.getElementById('grupoA');
-    let grupoB = document.getElementById('grupoB');
-    let grupoC = document.getElementById('grupoC');
-    let grupoD = document.getElementById('grupoD');
-    let grupoE = document.getElementById('grupoE');
-    let grupoF = document.getElementById('grupoF');
-    let grupoG = document.getElementById('grupoG');
-    let grupoH = document.getElementById('grupoH');
-    
-   
-
-    
+              
     team.map((element,index) => {
+        let i = 0;
         if(index <= 3){
+
+            let grupoA = document.getElementById('grupoA');
             let td = document.getElementById(`td-p${i}`);
-             var g = grupesList(element.Name);
+             var g = grupeslist(element.Name);
              grupoA.appendChild(g);
-             var t = grupesList(element.Name);
+             var t = grupesList(element.Name,element.placar);
              td.appendChild(t); 
-            
-        
 
         }if (index >= 4 && index <= 7){
+            let grupoB = document.getElementById('grupoB');
             let td = document.getElementById(`td-p${i+1}`);
-            var g = grupesList(element.Name);
+            var g = grupeslist(element.Name);
             grupoB.appendChild(g)
-            var t = grupesList(element.Name);
+            var t = grupesList(element.Name,element.placar);
              td.appendChild(t); 
             
         }if (index >= 8 && index <= 11){
+            let grupoC = document.getElementById('grupoC');
             let td = document.getElementById(`td-p${i+2}`);
-            var g = grupesList(element.Name);
+            var g = grupeslist(element.Name);
             grupoC.appendChild(g)
-            var t = grupesList(element.Name);
+            var t = grupesList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >= 12 && index <= 15){
+            let grupoD = document.getElementById('grupoD');
             let td = document.getElementById(`td-p${i+3}`);
-            var g = grupesList(element.Name);
+            var g = grupeslist(element.Name);
             grupoD.appendChild(g)
-            var t = grupesList(element.Name);
+            var t = grupesList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >= 16 && index <= 19){
+            let grupoE = document.getElementById('grupoE');
             let td = document.getElementById(`td-p${i+4}`);
-            var g = grupesList(element.Name);
+            var g = grupeslist(element.Name);
             grupoE.appendChild(g)
-            var t = grupesList(element.Name);
+            var t = grupesList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >= 20 && index <= 23){
+            let grupoF = document.getElementById('grupoF');
             let td = document.getElementById(`td-p${i+5}`);
-            var g = grupesList(element.Name);
+            var g = grupeslist(element.Name);
             grupoF.appendChild(g)
-            var t = grupesList(element.Name);
+            var t = grupesList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >= 24 && index <= 27){
+            let grupoG = document.getElementById('grupoG');
             let td = document.getElementById(`td-p${i+6}`);
-            var g = grupesList(element.Name);
+            var g = grupeslist(element.Name);
             grupoG.appendChild(g)
-            var t = grupesList(element.Name);
+            var t = grupesList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >=28){
+            let grupoH = document.getElementById('grupoH');
             let td = document.getElementById(`td-p${i+7}`);
-            var g = grupesList(element.Name);
+            var g = grupeslist(element.Name);
             grupoH.appendChild(g)
-            var t = grupesList(element.Name);
+            var t = grupesList(element.Name,element.placar);
              td.appendChild(t); 
         }
     });
+    finais(team);
 }
 
-
-
-
-
-const grupesList = (element) =>{
+const grupeslist = (element) =>{
     let name = document.createElement("a");
     name.setAttribute("id", `grupe-a`);
-    name.innerHTML = element;
+    name.innerHTML = [element]
+   
     
     return name
 }
 
-
-
-const grupesBoard = (element) =>{
+//trocar nome
+const grupesList = (element,placar) =>{
     
     let name = document.createElement("p");
-    name.setAttribute("id", `board-score`);
-    name.innerHTML = element;
+    name.setAttribute("id", `placar`);
+    name.innerHTML = [`${element}\u00A0\u00A0→\u00A0
+    Jogos\u00A0:\u00A0${placar.J}\u00A0\u00A0|\u00A0
+    Vitorias\u00A0:\u00A0${placar.V}\u00A0\u00A0|\u00A0
+    Empates\u00A0:\u00A0${placar.E}\u00A0\u00A0|\u00A0
+    Derrotas\u00A0:\u00A0${placar.D}\u00A0\u00A0|\u00A0
+    Gols\u00A0:\u00A0${placar.G}\u00A0\u00A0|\u00A0
+    Pontos\u00A0:\u00A0${placar.P}\u00A0\u00A0`]
     
     return name
 }
-
-const boardScore = (element) =>{
-    let grupos = 0;
-    let resultA = resultados();
-    let resultB = resultados();
-    // let resultC = resultados();
-    // let resultD = resultados();
-    // let resultE = resultados();
-    // let resultF = resultados();
-    // let resultG = resultados();
-    // let resultH = resultados();
-    
-    
-
-    resultA.forEach((element) => {
-        
-        let tp = document.getElementById(`p-score${grupos += 1}`);
-
-
-        var jj = grupesBoard(element.J)
-        var vt = grupesBoard(element.V)
-        var ep = grupesBoard(element.E)
-        var dt = grupesBoard(element.D)
-        var gs = grupesBoard(element.G)
-        var pt = grupesBoard(element.P) 
-
-        tp.appendChild(jj); 
-        tp.appendChild(vt); 
-        tp.appendChild(ep); 
-        tp.appendChild(dt); 
-        tp.appendChild(gs);
-        tp.appendChild(pt); 
-    
-    });
-
-    resultB.forEach((element) => {
-        
-        let tp = document.getElementById(`p-score${grupos += 1}`);
-
-
-        var jj = grupesBoard(element.J)
-        var vt = grupesBoard(element.V)
-        var ep = grupesBoard(element.E)
-        var dt = grupesBoard(element.D)
-        var gs = grupesBoard(element.G)
-        var pt = grupesBoard(element.P) 
-
-        tp.appendChild(jj); 
-        tp.appendChild(vt); 
-        tp.appendChild(ep); 
-        tp.appendChild(dt); 
-        tp.appendChild(gs);
-        tp.appendChild(pt); 
-    
-    });
-
-    resultC.forEach((element) => {
-        
-        let tp = document.getElementById(`p-score${grupos += 1}`);
-
-
-        var jj = grupesBoard(element.J)
-        var vt = grupesBoard(element.V)
-        var ep = grupesBoard(element.E)
-        var dt = grupesBoard(element.D)
-        var gs = grupesBoard(element.G)
-        var pt = grupesBoard(element.P) 
-
-        tp.appendChild(jj); 
-        tp.appendChild(vt); 
-        tp.appendChild(ep); 
-        tp.appendChild(dt); 
-        tp.appendChild(gs);
-        tp.appendChild(pt); 
-    
-    });
-
-    resultD.forEach((element) => {
-        
-        let tp = document.getElementById(`p-score${grupos += 1}`);
-
-
-        var jj = grupesBoard(element.J)
-        var vt = grupesBoard(element.V)
-        var ep = grupesBoard(element.E)
-        var dt = grupesBoard(element.D)
-        var gs = grupesBoard(element.G)
-        var pt = grupesBoard(element.P) 
-
-        tp.appendChild(jj); 
-        tp.appendChild(vt); 
-        tp.appendChild(ep); 
-        tp.appendChild(dt); 
-        tp.appendChild(gs);
-        tp.appendChild(pt); 
-    
-    });
-
-    resultE.forEach((element) => {
-        
-        let tp = document.getElementById(`p-score${grupos += 1}`);
-
-
-        var jj = grupesBoard(element.J)
-        var vt = grupesBoard(element.V)
-        var ep = grupesBoard(element.E)
-        var dt = grupesBoard(element.D)
-        var gs = grupesBoard(element.G)
-        var pt = grupesBoard(element.P) 
-
-        tp.appendChild(jj); 
-        tp.appendChild(vt); 
-        tp.appendChild(ep); 
-        tp.appendChild(dt); 
-        tp.appendChild(gs);
-        tp.appendChild(pt); 
-    
-    });
-
-    resultF.forEach((element) => {
-        
-        let tp = document.getElementById(`p-score${grupos += 1}`);
-
-
-        var jj = grupesBoard(element.J)
-        var vt = grupesBoard(element.V)
-        var ep = grupesBoard(element.E)
-        var dt = grupesBoard(element.D)
-        var gs = grupesBoard(element.G)
-        var pt = grupesBoard(element.P) 
-
-        tp.appendChild(jj); 
-        tp.appendChild(vt); 
-        tp.appendChild(ep); 
-        tp.appendChild(dt); 
-        tp.appendChild(gs);
-        tp.appendChild(pt); 
-    
-    });
-
-    resultG.forEach((element) => {
-        
-        let tp = document.getElementById(`p-score${grupos += 1}`);
-
-
-        var jj = grupesBoard(element.J)
-        var vt = grupesBoard(element.V)
-        var ep = grupesBoard(element.E)
-        var dt = grupesBoard(element.D)
-        var gs = grupesBoard(element.G)
-        var pt = grupesBoard(element.P) 
-
-        tp.appendChild(jj); 
-        tp.appendChild(vt); 
-        tp.appendChild(ep); 
-        tp.appendChild(dt); 
-        tp.appendChild(gs);
-        tp.appendChild(pt); 
-    
-    });
-
-    resultH.forEach((element) => {
-        
-        let tp = document.getElementById(`p-score${grupos += 1}`);
-
-
-        var jj = grupesBoard(element.J)
-        var vt = grupesBoard(element.V)
-        var ep = grupesBoard(element.E)
-        var dt = grupesBoard(element.D)
-        var gs = grupesBoard(element.G)
-        var pt = grupesBoard(element.P) 
-
-        tp.appendChild(jj); 
-        tp.appendChild(vt); 
-        tp.appendChild(ep); 
-        tp.appendChild(dt); 
-        tp.appendChild(gs);
-        tp.appendChild(pt); 
-    
-    });
-}
-
-
 
 const resultados = () => {
     timeA = {
@@ -366,10 +167,10 @@ const resultados = () => {
     }
 
    for(let i = 0; i < 3; i++){
-    let A = Math.floor(Math.random() * 4);
-    let B = Math.floor(Math.random() * 4);
-    let C = Math.floor(Math.random() * 4);
-    let D = Math.floor(Math.random() * 4);
+    let A = Math.floor(Math.random() * 9);
+    let B = Math.floor(Math.random() * 9);
+    let C = Math.floor(Math.random() * 9);
+    let D = Math.floor(Math.random() * 9);
 
     switch (i) {
         case 0:
@@ -493,22 +294,161 @@ const resultados = () => {
     
    } 
 
-   chaves(timeA,timeB,timeC,timeD)
+   
    
     return [timeA,timeB,timeC,timeD];
    
 }
+//trocar nome
+const loadAll = async () => {
+    let teams = await basicFetch();
+    teamsEmbaralhados = embaralhadorArras(teams); 
+    let teamsSeparados = separar(teamsEmbaralhados, 4) 
+    
+    teamsSeparados.map((i) =>{
+        let res = resultados()
+        i[0].placar =res[0];
+        i[1].placar =res[1];
+        i[2].placar =res[2];
+        i[3].placar =res[3];
+        
+    })
 
+    let teamsJuntos = teamsSeparados[0].concat(teamsSeparados[1]).concat(teamsSeparados[2]).concat(teamsSeparados[3]).concat(teamsSeparados[4])
+    .concat(teamsSeparados[5]).concat(teamsSeparados[6]).concat(teamsSeparados[7])
 
-const chaves = async (A,B,C,D) =>{
-let teams = await loadAll();
-
-console.log(A,B,C,D)
+    
+    
+    return teamsJuntos
 }
+//----------------------------------------ARRUMAR LOGICA
+const finais = (item)=>{
+    
+    let separados = separar(item, 4)
+    let finalistas = [];
+    separados.map((element) => {
+        let primeiro = {P: 0,G: 0};
+        let segundo = {P: 0,G: 0};
+        let nome1 ={Token: '',time: 0,res: 0,penalty: 0};
+        let nome2 ={Token: '', time: 0,res: 0,penalty: 0};
+
+        element.map((items,i)=>{
+    
+            if(items.placar.P > primeiro.P || items.placar.P == primeiro.P && items.placar.G > primeiro.G)primeiro = items.placar, nome1.time= items.Name, nome1.Token = items.Token ;
+            if(items.placar.P < primeiro.P && items.placar.P >= segundo.P && items.placar.G > segundo.G || items.placar.P == primeiro.P &&  items.placar.G < primeiro.G ){segundo = items.placar, nome2.time= items.Name; nome2.Token = items.Token}
+            else if(segundo.P == 0 && segundo.G == 0){if(element[1].placar == primeiro)segundo = element[0].placar, nome2.time= element[0].Name, nome2.Token = element[0].Token;}            
+        });finalistas.push(nome1,nome2)
+    })
+    finaisList(finalistas)
+}
+
+
+const finaisList = (element) =>{
+
+let semis = [];
+let finals = [];
+let champion = [];
+    
+    const exibir =(item)=>{
+        item.res = Math.floor(Math.random() * 9);
+        let name = document.createElement("div");
+        name.setAttribute("id", `chaves`);
+        name.innerHTML = `${item.time} → ${item.res}`
+        
+        
+        return name
+    }
+
+    
+    var a1 = exibir(element[0]); oitavas-oitavas0.appendChild(a1);
+    var b2 = exibir(element[3]);oitavas-oitavas0.appendChild(b2);
+    var c1 = exibir(element[4]); oitavas-oitavas1.appendChild(c1);
+    var d2 = exibir(element[7]);oitavas-oitavas1.appendChild(d2);
+    var e1 = exibir(element[8]); oitavas-oitavas2.appendChild(e1);
+    var f2 = exibir(element[11]);oitavas-oitavas2.appendChild(f2);
+    var g1 = exibir(element[12]); oitavas-oitavas3.appendChild(g1);
+    var h2 = exibir(element[15]);oitavas-oitavas3.appendChild(h2);
+    var b1 = exibir(element[2]); oitavas-oitavas4.appendChild(b1);
+    var a2 = exibir(element[1]);oitavas-oitavas4.appendChild(a2);
+    var d1 = exibir(element[6]); oitavas-oitavas5.appendChild(d1);
+    var c2 = exibir(element[5]);oitavas-oitavas5.appendChild(c2);
+    var f1 = exibir(element[10]); oitavas-oitavas6.appendChild(f1);
+    var e2 = exibir(element[9]);oitavas-oitavas6.appendChild(e2);
+    var h1 = exibir(element[14]); oitavas-oitavas7.appendChild(h1);
+    var g2 = exibir(element[13]);oitavas-oitavas7.appendChild(g2);
+
+    let quartas1 = document.getElementById('quartas1');
+    let quartas2 = document.getElementById('quartas2');
+    let quartas3 = document.getElementById('quartas3');
+    let quartas4 = document.getElementById('quartas4');
+    
+
+    const Finais = (time1,time2,item,arr)=>{
+        if(time1.res > time2.res){var element = exibir(time1);item.appendChild(element); arr.push(time1)  }
+        else if(time1.res == time2.res){
+            time1.penalty = Math.floor(Math.random() * 9); 
+            time2.penalty = Math.floor(Math.random() * 9); 
+        if(time1.penalty > time2.penalty){ element = exibir(time1), arr.push(time1)}  else { element = exibir(time2), arr.push(time2)}
+        item.appendChild(element);
+    }else{var element = exibir(time2);item.appendChild(element);arr.push(time2)}
+    }
+
+    Finais(element[0],element[3],quartas1,semis)
+    Finais(element[4],element[7],quartas1,semis)
+    Finais(element[8],element[11],quartas2,semis)
+    Finais(element[12],element[15],quartas2,semis)
+    Finais(element[2],element[1],quartas3,semis)
+    Finais(element[6],element[5],quartas3,semis)
+    Finais(element[10],element[9],quartas4,semis)
+    Finais(element[14],element[13],quartas4,semis)
+    
+    
+    let semis1 = document.getElementById('semis1');
+    let semis2 = document.getElementById('semis2');
+
+    Finais(semis[0],semis[1],semis1,finals)
+    Finais(semis[2],semis[3],semis1,finals)
+    Finais(semis[4],semis[5],semis2,finals)
+    Finais(semis[6],semis[7],semis2,finals)
+    
+    let finais1 = document.getElementById('finais1');
+    Finais(finals[0],finals[1],finais1,champion)
+    Finais(finals[2],finals[3],finais1,champion)
+    
+    const APIJson = (item)=>{
+        let JSON = {
+           "equipeA":item[0].Token, 
+           "equipeB":item[1].Token,
+           "golsEquipeA":item[0].res, 
+           "golsEquipeB":item[1].res,
+           "golsPenaltyTimeA": item[0].penalty, 
+           "golsPenaltyTimeB": item[1].penalty 
+        }
+        return JSON
+    }
+
+    const JSON = APIJson(champion)
+    APIPost(JSON);
+}
+
+const APIPost = async (item) =>{
+
+    const response = await fetch("https://estagio.geopostenergy.com/WorldCup/InsertFinalResult", {
+        method: "POST",
+        body: JSON.stringify(item),
+        headers: {"git-user": "thiagoRN",
+                  "Content-type": "application/json",            
+    }});
+
+    const data = await response.json();
+    console.log(data);
+}
+
+grupes();
     
 
 
 
-grupesBoard();
-boardScore();
-grupes();
+
+
+

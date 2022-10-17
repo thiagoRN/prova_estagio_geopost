@@ -45,6 +45,10 @@ div h3{
     display: block;
     margin: 8px 8px 16px 8px;
 }
+#placar{
+   
+    margin: 10px 0px 25px 5px;
+}
 
 /* TABELAS */   
 #body-section{
@@ -52,6 +56,8 @@ div h3{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    
+    
 }
 
 #table-content{
@@ -81,6 +87,10 @@ div h3{
     justify-content: space-between;
 }
 
+#tbody  p{
+   font-size: 13px;
+}
+
 #board{
     display: inline-block;
     text-align: center;
@@ -105,7 +115,18 @@ div h3{
 }
 
 
-
+/* =================================================================*/
+#chaves-section{
+    margin-top: 100px;
+}
+#chaves-section div{
+    display: inline-table;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgb(205, 210, 255);
+    padding: 10px;
+    max-width: 210px;
+}
 
 
 
