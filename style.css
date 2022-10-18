@@ -161,4 +161,24 @@ div h3{
 }
 
 
+/* ====================  media query  ============================*/
 
+@media (max-width: 1185px) {
+    #teams{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #teams div{
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 1095px) {
+    #chaves-section div{
+        display:block ;
+        margin: 0px auto 20px auto;
+        border-bottom: none;
+        
+    }
+}

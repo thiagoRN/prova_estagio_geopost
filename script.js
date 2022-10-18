@@ -320,7 +320,7 @@ const addPlacar = async () => {
     
     return teamsJuntos
 }
-//----------------------------------------ARRUMAR LOGICA
+
 const finais = (item)=>{
     
     let separados = separarArray(item, 4)
@@ -334,7 +334,8 @@ const finais = (item)=>{
         element.map((items,i)=>{
     
             if(items.placar.P > primeiro.P || items.placar.P == primeiro.P && items.placar.G > primeiro.G)primeiro = items.placar, nome1.time= items.Name, nome1.Token = items.Token ;
-            if(items.placar.P < primeiro.P && items.placar.P >= segundo.P && items.placar.G > segundo.G || items.placar.P == primeiro.P &&  items.placar.G < primeiro.G ){segundo = items.placar, nome2.time= items.Name; nome2.Token = items.Token}
+            if(items.placar.P < primeiro.P && items.placar.P >= segundo.P && items.placar.G > segundo.G || items.placar.P == primeiro.P &&  items.placar.G < primeiro.G )
+            {segundo = items.placar, nome2.time= items.Name; nome2.Token = items.Token}
             else if(segundo.P == 0 && segundo.G == 0){if(element[1].placar == primeiro)segundo = element[0].placar, nome2.time= element[0].Name, nome2.Token = element[0].Token;}            
         });finalistas.push(nome1,nome2)
     })
@@ -446,15 +447,15 @@ let champions = [];
 }
 
 const APIPost = async (item) =>{
-    // const response = await fetch("https://estagio.geopostenergy.com/WorldCup/InsertFinalResult", {
-    //     method: "POST",
-    //     body: JSON.stringify(item),
-    //     headers: {"git-user": "thiagoRN",
-    //               "Content-type": "application/json",            
-    // }});
+    const response = await fetch("https://estagio.geopostenergy.com/WorldCup/InsertFinalResult", {
+        method: "POST",
+        body: JSON.stringify(item),
+        headers: {"git-user": "thiagoRN",
+                  "Content-type": "application/json",            
+    }});
 
-    // const data = await response.json();
-    // console.log(data);
+    const data = await response.json();
+    console.log(data);
 }
 
 group();
