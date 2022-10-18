@@ -11,38 +11,43 @@
     text-decoration: none;
     list-style: none;
     font-family: 'Ubuntu', sans-serif;
+    background-color: #5d0172;
+    color: #da70c3;
 }
 
-/* GRUPOS DE TIMES */   
-
+ 
+/* ====================  head-section  ============================*/
 #teams{
     display: flex;
     padding: 10px;
     align-items: center;
     justify-content: space-between;
-    border: 0.8px solid rgb(211, 211, 211);
-    height: 250px;
+    border: 0.8px solid #da70c3;
+    
+    
 }
 
 #teams div{
     border: 0.8px solid rgb(211, 211, 211);
-    border-color: rgb(179, 178, 178);
+    border-color:  #da70c3;;
     margin: 15px 0 15px 15px;
     width: 100%;
-    
+    background-color: white;
 }
 
 
 
 div h3{
-    background-color: rgb(110, 151, 238);
+    
     padding: 8px 0px 8px 2px;
     margin-bottom: 5px;
-    color: aliceblue;
+    color: #da70c3;
+    
 }
 
 #grupe-a{
     display: block;
+    background-color: white;
     margin: 8px 8px 16px 8px;
 }
 #placar{
@@ -50,21 +55,28 @@ div h3{
     margin: 10px 0px 25px 5px;
 }
 
-/* TABELAS */   
+/* ====================  body-section  ============================*/
+   
 #body-section{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    
-    
+    background-color: white;
+    border-bottom: 0.8px solid rgb(211, 211, 211);
+    border-color:  #da70c3;  
 }
 
 #table-content{
-    background-color: rgb(209, 209, 209);
     margin: 35px;
     min-width: 300px;  
-    
+    border: 0.8px solid rgb(211, 211, 211);
+    border-color:  #da70c3;
+   
+}
+
+#table-content h3{
+    color: #da70c3;
 }
 
 
@@ -75,20 +87,32 @@ div h3{
 
 #table{
     display:  block;
+    
 }
 
-#thead{
-    display:flex;
-    justify-content: end;
-}
 
 #tbody{
     display:flex;
     justify-content: space-between;
 }
 
-#tbody  p{
+#td-p0{
+    background-color: white;
+}
+#tbody div {
+    background-color: white;
+}
+
+#placar{
+    border: 0.8px solid rgb(211, 211, 211);
+    border-color:  #da70c3;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+#tbody div p{
    font-size: 13px;
+   background-color: white;
 }
 
 #board{
@@ -115,17 +139,25 @@ div h3{
 }
 
 
-/* =================================================================*/
+/* ====================  chaves-section  ============================*/
 #chaves-section{
-    margin-top: 100px;
+    background-color: white;
 }
 #chaves-section div{
     display: inline-table;
     text-align: center;
     vertical-align: middle;
-    background-color: rgb(205, 210, 255);
-    padding: 10px;
-    max-width: 210px;
+    margin: 20px 20px 20px 20px;
+    max-width: 230px;
+    background-color: white;
+}
+
+
+#oitavas,#quartas,#semis,#finais,#oitavas0,#oitavas1,#oitavas2
+,#oitavas3,#oitavas4,#oitavas5,#oitavas6,#oitavas7,#quartas1,
+#quartas2,#quartas3,#quartas4,#semis1,#semis2,#finais1{
+    border: 0.8px solid rgb(211, 211, 211);
+    border-color:  #da70c3;
 }
 
 

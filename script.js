@@ -6,27 +6,27 @@ const basicFetch = async () => {
     
     return json.Result
 }
-  //trocar nome
-  const separar = (base, maximo) =>{
+  
+  const separarArray = (base, maximo) =>{
     var resultado = [[]];
     var grupo = 0;
   
-    for (var indice = 0; indice < base.length; indice++) {
+    for (var index = 0; index < base.length; index++) {
       if (resultado[grupo] === undefined) {
         resultado[grupo] = [];
       }
   
-      resultado[grupo].push(base[indice]);
+      resultado[grupo].push(base[index]);
   
-      if ((indice + 1) % maximo === 0) {
+      if ((index + 1) % maximo === 0) {
         grupo = grupo + 1;
       }
     }
   
     return resultado;
 }
-//trocar nome
-const embaralhadorArras = (array) =>{
+
+const embaralharArrays = (array) =>{
     let currentIndex = array.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -38,8 +38,8 @@ const embaralhadorArras = (array) =>{
     return array;
 }
 
-const grupes = async () =>{
-    let team = await loadAll();
+const group = async () =>{
+    let team = await addPlacar();
               
     team.map((element,index) => {
         let i = 0;
@@ -47,67 +47,67 @@ const grupes = async () =>{
 
             let grupoA = document.getElementById('grupoA');
             let td = document.getElementById(`td-p${i}`);
-             var g = grupeslist(element.Name);
+             let g = tableList(element.Name);
              grupoA.appendChild(g);
-             var t = grupesList(element.Name,element.placar);
+             let t = groupList(element.Name,element.placar);
              td.appendChild(t); 
 
         }if (index >= 4 && index <= 7){
             let grupoB = document.getElementById('grupoB');
             let td = document.getElementById(`td-p${i+1}`);
-            var g = grupeslist(element.Name);
+            let g = tableList(element.Name);
             grupoB.appendChild(g)
-            var t = grupesList(element.Name,element.placar);
+            let t = groupList(element.Name,element.placar);
              td.appendChild(t); 
             
         }if (index >= 8 && index <= 11){
             let grupoC = document.getElementById('grupoC');
             let td = document.getElementById(`td-p${i+2}`);
-            var g = grupeslist(element.Name);
+            let g = tableList(element.Name);
             grupoC.appendChild(g)
-            var t = grupesList(element.Name,element.placar);
+            let t = groupList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >= 12 && index <= 15){
             let grupoD = document.getElementById('grupoD');
             let td = document.getElementById(`td-p${i+3}`);
-            var g = grupeslist(element.Name);
+            let g = tableList(element.Name);
             grupoD.appendChild(g)
-            var t = grupesList(element.Name,element.placar);
+            let t = groupList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >= 16 && index <= 19){
             let grupoE = document.getElementById('grupoE');
             let td = document.getElementById(`td-p${i+4}`);
-            var g = grupeslist(element.Name);
+            let g = tableList(element.Name);
             grupoE.appendChild(g)
-            var t = grupesList(element.Name,element.placar);
+            let t = groupList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >= 20 && index <= 23){
             let grupoF = document.getElementById('grupoF');
             let td = document.getElementById(`td-p${i+5}`);
-            var g = grupeslist(element.Name);
+            let g = tableList(element.Name);
             grupoF.appendChild(g)
-            var t = grupesList(element.Name,element.placar);
+            let t = groupList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >= 24 && index <= 27){
             let grupoG = document.getElementById('grupoG');
             let td = document.getElementById(`td-p${i+6}`);
-            var g = grupeslist(element.Name);
+            let g = tableList(element.Name);
             grupoG.appendChild(g)
-            var t = grupesList(element.Name,element.placar);
+            let t = groupList(element.Name,element.placar);
              td.appendChild(t); 
         }if (index >=28){
             let grupoH = document.getElementById('grupoH');
             let td = document.getElementById(`td-p${i+7}`);
-            var g = grupeslist(element.Name);
+            let g = tableList(element.Name);
             grupoH.appendChild(g)
-            var t = grupesList(element.Name,element.placar);
+            let t = groupList(element.Name,element.placar);
              td.appendChild(t); 
         }
     });
     finais(team);
 }
 
-const grupeslist = (element) =>{
+const tableList = (element) =>{
     let name = document.createElement("a");
     name.setAttribute("id", `grupe-a`);
     name.innerHTML = [element]
@@ -116,8 +116,7 @@ const grupeslist = (element) =>{
     return name
 }
 
-//trocar nome
-const grupesList = (element,placar) =>{
+const groupList = (element,placar) =>{
     
     let name = document.createElement("p");
     name.setAttribute("id", `placar`);
@@ -299,11 +298,11 @@ const resultados = () => {
     return [timeA,timeB,timeC,timeD];
    
 }
-//trocar nome
-const loadAll = async () => {
+
+const addPlacar = async () => {
     let teams = await basicFetch();
-    teamsEmbaralhados = embaralhadorArras(teams); 
-    let teamsSeparados = separar(teamsEmbaralhados, 4) 
+    teamsEmbaralhados = embaralharArrays(teams); 
+    let teamsSeparados = separarArray(teamsEmbaralhados, 4) 
     
     teamsSeparados.map((i) =>{
         let res = resultados()
@@ -324,7 +323,7 @@ const loadAll = async () => {
 //----------------------------------------ARRUMAR LOGICA
 const finais = (item)=>{
     
-    let separados = separar(item, 4)
+    let separados = separarArray(item, 4)
     let finalistas = [];
     separados.map((element) => {
         let primeiro = {P: 0,G: 0};
@@ -345,17 +344,16 @@ const finais = (item)=>{
 
 const finaisList = (element) =>{
 
+let quartas = [];
 let semis = [];
 let finals = [];
-let champion = [];
+let champions = [];
     
     const exibir =(item)=>{
-        item.res = Math.floor(Math.random() * 9);
+        item.res = Math.floor(Math.random() * 4);
         let name = document.createElement("div");
         name.setAttribute("id", `chaves`);
-        name.innerHTML = `${item.time} → ${item.res}`
-        
-        
+        name.innerHTML = `${item.time} → ${item.res}`   
         return name
     }
 
@@ -384,6 +382,7 @@ let champion = [];
     
 
     const Finais = (time1,time2,item,arr)=>{
+        time1.penalty,time2.penalty=0;
         if(time1.res > time2.res){var element = exibir(time1);item.appendChild(element); arr.push(time1)  }
         else if(time1.res == time2.res){
             time1.penalty = Math.floor(Math.random() * 9); 
@@ -393,27 +392,42 @@ let champion = [];
     }else{var element = exibir(time2);item.appendChild(element);arr.push(time2)}
     }
 
-    Finais(element[0],element[3],quartas1,semis)
-    Finais(element[4],element[7],quartas1,semis)
-    Finais(element[8],element[11],quartas2,semis)
-    Finais(element[12],element[15],quartas2,semis)
-    Finais(element[2],element[1],quartas3,semis)
-    Finais(element[6],element[5],quartas3,semis)
-    Finais(element[10],element[9],quartas4,semis)
-    Finais(element[14],element[13],quartas4,semis)
+
+
+    Finais(element[0],element[3],quartas1,quartas)
+    Finais(element[4],element[7],quartas1,quartas)
+    Finais(element[8],element[11],quartas2,quartas)
+    Finais(element[12],element[15],quartas2,quartas)
+    Finais(element[2],element[1],quartas3,quartas)
+    Finais(element[6],element[5],quartas3,quartas)
+    Finais(element[10],element[9],quartas4,quartas)
+    Finais(element[14],element[13],quartas4,quartas)
     
     
     let semis1 = document.getElementById('semis1');
     let semis2 = document.getElementById('semis2');
 
-    Finais(semis[0],semis[1],semis1,finals)
-    Finais(semis[2],semis[3],semis1,finals)
-    Finais(semis[4],semis[5],semis2,finals)
-    Finais(semis[6],semis[7],semis2,finals)
+    Finais(quartas[0],quartas[1],semis1,semis)
+    Finais(quartas[2],quartas[3],semis1,semis)
+    Finais(quartas[4],quartas[5],semis2,semis)
+    Finais(quartas[6],quartas[7],semis2,semis)
     
     let finais1 = document.getElementById('finais1');
-    Finais(finals[0],finals[1],finais1,champion)
-    Finais(finals[2],finals[3],finais1,champion)
+    Finais(semis[0],semis[1],finais1,finals)
+    Finais(semis[2],semis[3],finais1,finals)
+
+    Desempate = (time1,time2,arr)=>{
+        time1.penalty,time2.penalty=0;
+        if(time1.res == time2.res){
+            time1.penalty = Math.floor(Math.random() * 9); 
+            time2.penalty = Math.floor(Math.random() * 9);}
+            arr.push(time1)
+            arr.push(time2)
+    }
+
+    Desempate(finals[0],finals[1],champions)
+
+    
     
     const APIJson = (item)=>{
         let JSON = {
@@ -427,24 +441,23 @@ let champion = [];
         return JSON
     }
 
-    const JSON = APIJson(champion)
+    const JSON = APIJson(champions)
     APIPost(JSON);
 }
 
 const APIPost = async (item) =>{
+    // const response = await fetch("https://estagio.geopostenergy.com/WorldCup/InsertFinalResult", {
+    //     method: "POST",
+    //     body: JSON.stringify(item),
+    //     headers: {"git-user": "thiagoRN",
+    //               "Content-type": "application/json",            
+    // }});
 
-    const response = await fetch("https://estagio.geopostenergy.com/WorldCup/InsertFinalResult", {
-        method: "POST",
-        body: JSON.stringify(item),
-        headers: {"git-user": "thiagoRN",
-                  "Content-type": "application/json",            
-    }});
-
-    const data = await response.json();
-    console.log(data);
+    // const data = await response.json();
+    // console.log(data);
 }
 
-grupes();
+group();
     
 
 
